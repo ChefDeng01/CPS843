@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 5
+names: ['minivan', 'pickup', 'sedans', 'suv', 'truck']
+
+roboflow:
+  workspace: cps843-p9fus
+  project: cps843-cars
+  version: 2
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/cps843-p9fus/cps843-cars/dataset/2
