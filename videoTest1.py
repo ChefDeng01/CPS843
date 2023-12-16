@@ -7,7 +7,6 @@ import cv2
 
 VIDEOS_DIR = os.path.join(".", "Videos")
 
-video_path = os.path.join(VIDEOS_DIR, "video.mp4")
 video_path_out = "YoloV8M200EpochThreshoold0.8.mp4"
 
 cap = cv2.VideoCapture("video_Cropped.mp4")
@@ -63,11 +62,18 @@ while ret:
                 cv2.LINE_AA,
             )
 
-    print("Minivans:", round(minivan_counter / 60))
-    print("Pickup Trucks:", round(pickup_counter / 100))
-    print("Sedans:", round(sedans_counter / 125))
-    print("SUVs:", round(suv_counter / 130))
-    print("Trucks:", round(truck_counter / 125))
+
+    r_minivan_counter = round(minivan_counter / 60)
+    r_pickup_counter = round(pickup_counter / 100)
+    r_sedans_counter = round(sedans_counter / 125)
+    r_suv_counter = round(suv_counter / 130)
+    r_truck_counter = round(truck_counter / 125)
+
+    print("Minivans:", r_minivan_counter)
+    print("Pickup Trucks:", r_pickup_counter)
+    print("Sedans:", r_sedans_counter)
+    print("SUVs:", r_suv_counter)
+    print("Trucks:", r_truck_counter)
 
     out.write(frame)
     ret, frame = cap.read()
@@ -77,7 +83,7 @@ out.release()
 cv2.destroyAllWindows()
 
 # Read the video
-video = cv2.VideoCapture("843test.mp4")
+video = cv2.VideoCapture("video_Cropped.mp4")
 
 # Read at least one frame to get the timestamp
 _, _ = video.read()
@@ -96,12 +102,12 @@ print(f"duration in seconds: {minutes}")
 video.release()
 
 total_car_count = (
-    sedans_counter + suv_counter + minivan_counter + pickup_counter + truck_counter
+    r_sedans_counter + r_suv_counter  + r_minivan_counter + r_pickup_counter + r_truck_counter
 )
 
 # Commercial Vs. Regular Count And Percentage
-regular = sedans_counter + suv_counter + minivan_counter
-commercial = pickup_counter + truck_counter
+regular = r_sedans_counter + r_suv_counter  + r_minivan_counter
+commercial = r_pickup_counter + r_truck_counter
 
 reg_p = (regular / (regular + commercial)) * 100
 com_p = (commercial / (regular + commercial)) * 100
@@ -147,7 +153,7 @@ else:
 # CSV Initial Setup
 cols = ["Vehicle Classes", "Number of Vehicles"]
 vehicles = ["Sedans", "SUV", "Minivans", "Pickup Truck", "Truck"]
-data = [sedans_counter, suv_counter, minivan_counter, pickup_counter, truck_counter]
+data = [r_sedans_counter, r_suv_counter, r_minivan_counter, r_pickup_counter, r_truck_counter]
 
 # Printing to CSV
 with open("data.csv", "w", encoding="UTF8", newline="") as f:
