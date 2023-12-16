@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 from ultralytics import YOLO
 import cv2
 
-
 VIDEOS_DIR = os.path.join(".", "Videos")
 
 video_path = os.path.join(VIDEOS_DIR, "video.mp4")
@@ -96,18 +95,13 @@ print(f"duration in seconds: {seconds}")
 print(f"duration in seconds: {minutes}")
 video.release()
 
-# Car Count
-sedan = 14
-suv = 18
-minivan = 5
-pickuptruck = 9
-truck = 4
-
-total_car_count = sedan + suv + minivan + pickuptruck + truck
+total_car_count = (
+    sedans_counter + suv_counter + minivan_counter + pickup_counter + truck_counter
+)
 
 # Commercial Vs. Regular Count And Percentage
-regular = sedan + suv + minivan
-commercial = pickuptruck + truck
+regular = sedans_counter + suv_counter + minivan_counter
+commercial = pickup_counter + truck_counter
 
 reg_p = (regular / (regular + commercial)) * 100
 com_p = (commercial / (regular + commercial)) * 100
@@ -144,7 +138,7 @@ else:
     crosswalk = False
 
 # Overhead Bridge Viability
-if (truck / minutes) <= 0.4:
+if (truck_counter / minutes) <= 0.4:
     bridge = True
 else:
     bridge = False
@@ -153,7 +147,7 @@ else:
 # CSV Initial Setup
 cols = ["Vehicle Classes", "Number of Vehicles"]
 vehicles = ["Sedans", "SUV", "Minivans", "Pickup Truck", "Truck"]
-data = [sedan, suv, minivan, pickuptruck, truck]
+data = [sedans_counter, suv_counter, minivan_counter, pickup_counter, truck_counter]
 
 # Printing to CSV
 with open("data.csv", "w", encoding="UTF8", newline="") as f:
