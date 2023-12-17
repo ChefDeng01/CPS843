@@ -54,4 +54,4 @@ Figure 2: The visualization of data for urban city planners to determine new inf
 * Pandas
 * YOLOv8
 * Data Analysis Of City Street Traffic
-* Vehicle Class Detection And Data Visualizer FOr City Planners
+* Vehicle Class Detection And Data Visualizer For City Planners
