@@ -24,6 +24,8 @@ Figure 2: The visualization of data for urban city planners to determine new inf
     4. Matplotlib.pyplot: pip3 install -U matplotlib
     5. ultralytics: pip3 install -U ultralytics
     6. CV2: pip3 install opencv-python
+        1. For an NVIDIA GPU: pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+        2. For any other GPU (Uses CPU): pip3 install torch torchvision torchaudio
 3. To run the code, in the terminal run: python3 videotest1.py
 
 ## Developers
